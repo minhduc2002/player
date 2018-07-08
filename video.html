@@ -1,0 +1,38 @@
+<head>
+<script src="https://unpkg.com/sweetalert@2.1.0/dist/sweetalert.min.js"></script>
+<style>body, html{margin: 0; padding: 0; height: 100%; overflow: hidden;}#content{position:absolute; left: 0; right: 0; bottom: 0; top: 0px;}</style>
+<script src='http://jwpsrv.com/library/v71rLsS8EeOxRSIACi0I_Q.js'></script>
+</head>
+<body>
+<div id='JWplayer'></div>
+<script>
+function t(){
+ swal("NHẬP URL",{
+  content:{
+   element: "input", text: "Nhập URL", 
+   attributes:{placeholder: "Nhập vào đây",},
+  },
+ })
+ .then((value)=>{
+ var x=value;
+  if (x==null){t();}
+  else {
+   if (x==""){x="https://bit.ly/duc2002";}
+   else {
+    if (x.indexOf("http")==-1){
+     if (x.indexOf(".") !=-1){x="https://"+x;}
+      if ((x.match(/\d/g))==null){x="https://bit.ly/"+x;}
+      else {
+       if (x.length==String((x.match(/\d/g)).join("")).length){x="https://bit.ly/videotcl"+x;}
+       else{x="https://bit.ly/"+x;}
+      }
+    }
+   }
+  }
+ jwplayer('JWplayer').setup({file: '$value', width: '100%', height: '100%',});
+ }
+ });
+}
+t();
+</script>
+</body>
